@@ -51,3 +51,26 @@ void bankAccount::savetoFile(){
     }
     
 }
+
+void bankAccount::loadFromFile(){
+    ifstream file(accountNumber + ".txt");
+    if (file.is_open())
+    {
+        getline(file,bankName);
+        getline(file,accountHolderName);
+        getline(file,accountNumber);
+        getline(file,accountPassword);
+        getline(file,aadhaarNumber);
+        getline(file,accountPhonenumber);
+        file>>accountBalance;
+        file.ignore();
+        string transaction;
+        while (getline(file,transaction)){
+            transactionHistory.push_back(transaction);
+        }
+        file.close();
+    }else{
+        cout<<"Error File Opening"<<endl;
+    }
+    
+}
