@@ -4,5 +4,3 @@ This is a beginner-level project to learn C++ concepts like:
 - Input/Output
 - Functions
 - OOP
-
-Currently in Phase 1 (Basics).
