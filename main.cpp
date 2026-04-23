@@ -27,4 +27,27 @@ class bankAccount{
     void checkBalance();
     void accountDetails();
     void allTransactions();
+
+    vector <string> transactionHistory;
 };
+
+void bankAccount::savetoFile(){
+    ofstream file(accountNumber + ".txt");
+    if (file.is_open())
+    {
+        file<<bankName<<endl;
+        file<<accountHolderName<<endl;
+        file<<accountNumber<<endl;
+        file<<accountPassword<<endl;
+        file<<aadhaarNumber<<endl;
+        file<<accountPhonenumber<<endl;
+        file<<accountBalance<<endl;
+        for (auto transaction : transactionHistory){
+            file<<transaction<<endl;
+        };
+        file.close();
+    }else{
+        cout<<"Error File Opening"<<endl;
+    }
+    
+}
