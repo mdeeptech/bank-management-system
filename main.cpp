@@ -41,7 +41,7 @@ void bankAccount::mainMenu(){
 
     do {
         cout<<"\n---------------------------------\n";
-        cout<<"Welcome to "<<bankName<<endl;
+        cout<<"Welcome to Bank of BMI"<<endl;
         cout<<"1. Deposit Money"<<endl;
         cout<<"2. Withdraw Money"<<endl;
         cout<<"3. Check Balance"<<endl;
@@ -237,7 +237,7 @@ int main() {
 
     do {
         cout<<"\n---------------------------------\n";
-        cout<<"Welcome to Bank System\n";
+        cout<<"Welcome to BANK OF BMI\n";
         cout<<"1. Create Account\n";
         cout<<"2. Login\n";
         cout<<"3. Exit\n";
