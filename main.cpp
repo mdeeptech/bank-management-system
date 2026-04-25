@@ -123,37 +123,65 @@ void bankAccount::loadFromFile(){
 
 void bankAccount::depositMoney() {
     double amount;
+
     cout<<"Enter amount to deposit: ";
     cin>>amount;
+
+    if(cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout<<"Invalid Input!\n";
+        return;
+    }
+
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
+    if(amount <= 0) {
+        cout<<"Amount must be greater than 0\n";
+        return;
+    }
+
     accountBalance += amount;
-    transactionHistory.push_back("Deposited: " + to_string(amount));
+
+    transactionHistory.push_back("Deposited Rs." + to_string((int)amount));
 
     savetoFile();
 
     cout<<"Money Deposited Successfully\n";
 }
-
 void bankAccount::withdrawMoney() {
     double amount;
+
     cout<<"Enter amount to withdraw: ";
     cin>>amount;
+
+    if(cin.fail()) {
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout<<"Invalid Input!\n";
+        return;
+    }
+
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-    if(amount > accountBalance){
+    if(amount <= 0) {
+        cout<<"Amount must be greater than 0\n";
+        return;
+    }
+
+    if(amount > accountBalance) {
         cout<<"Insufficient Balance\n";
         return;
     }
 
     accountBalance -= amount;
-    transactionHistory.push_back("Withdrawn: " + to_string(amount));
+
+    transactionHistory.push_back("Withdrawn Rs." + to_string((int)amount));
 
     savetoFile();
 
     cout<<"Money Withdrawn Successfully\n";
 }
-
 void bankAccount::checkBalance() {
     cout<<"Current Balance: "<<accountBalance<<endl;
 }
